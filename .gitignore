@@ -6,3 +6,12 @@ venv/
 .venv/
 *.egg-info/
 .DS_Store
+*.pkl
+*.zip
+final_dataset/
+dataset/
+*_results*/
+family_dataset/
+*.npy
+*.csv
+pi_localization_best.pth

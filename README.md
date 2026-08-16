@@ -32,16 +32,21 @@ pip install -r requirements.txt
 python generate_dataset.py --num-samples 20 --split train --output-dir ./output --seed 42
 ```
 Writes `output/train/reference/`, `output/train/search/`, `output/train/manifest.csv`.
+This script satisfies the Organizer's **Dataset Generator Script** requirement, generating paired synthetic images with recorded ground-truth coordinates.
 
 ## Visualize a sample
 ```
 python visualize_sample.py --output-dir ./output --split train --id 0
 ```
 
-## Run the baseline solution
+## Localization Inference Script (Submission Requirement)
+The standalone localization script runs the ZNCC + Siamese CNN verification pipeline on an arbitrary reference and search image:
+
+```bash
+python localization_inference.py --reference output/train/reference/00000.png --search output/train/search/00000.png
 ```
-python baseline_solution/infer.py --reference output/train/reference/00000.png --search output/train/search/00000.png
-```
+
+It will output the predicted center `(x, y)` of the reference pattern in the search image. This automatically loads the provided model weights (`best_verifier.pth`).
 
 ## Run tests
 ```
